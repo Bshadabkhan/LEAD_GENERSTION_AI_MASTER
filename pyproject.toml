@@ -1,0 +1,23 @@
+[project]
+name = "lead_generator"
+version = "0.1.0"
+description = "lead_generator using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.102.0,<1.0.0"
+]
+
+[project.scripts]
+lead_generator = "lead_generator.main:run"
+run_crew = "lead_generator.main:run"
+train = "lead_generator.main:train"
+replay = "lead_generator.main:replay"
+test = "lead_generator.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

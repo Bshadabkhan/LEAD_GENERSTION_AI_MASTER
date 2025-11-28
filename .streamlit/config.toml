@@ -1,0 +1,7 @@
+[theme]
+# Dark mode with vibrant accent color
+primaryColor = "#4F46E5"  # Vibrant indigo 
+backgroundColor = "#111827"  # Very dark blue-gray
+secondaryBackgroundColor = "#1F2937"  # Darker blue-gray
+textColor = "#F9FAFB"  # Off-white
+font = "sans serif"

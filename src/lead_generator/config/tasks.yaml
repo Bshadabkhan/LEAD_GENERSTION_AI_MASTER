@@ -1,0 +1,121 @@
+lead_generation_task:
+  description: >
+    Search for companies in the {industry} sector within {country}.
+    YOU MUST FIND AND RETURN EXACTLY 5 QUALIFIED COMPANIES.
+    
+    VALIDATION REQUIREMENTS:
+    1. Verify each company's website is active and legitimate
+    2. Only include LinkedIn profiles that you can confirm exist
+    3. For unverified information, use "Needs verification" instead of guessing
+    4. Focus only on companies operating in {industry}
+    5. YOU MUST RETURN EXACTLY 5 COMPANIES - NO LESS, NO MORE
+  expected_output: >
+    You MUST return a valid JSON array with EXACTLY 5 companies where each object has these fields:
+    [
+      {
+        "company_name": "String - Company name",
+        "annual_revenue": "String - Revenue with currency",
+        "location": {"city": "String - City name", "country": "String - Country name"},
+        "website_url": "String - Full URL with https://",
+        "review": "String - Short description of what they do and list of products they offer",
+        "num_employees": "Integer - Approximate number",
+        "key_decision_makers": [
+          {"name": "String - Person name", "role": "String - Job title", "linkedin": "String - LinkedIn URL"}
+        ],
+        "score": "Integer between 1-10"
+      }
+    ]
+  agent: lead_generator
+
+contact_research_task:
+  description: >
+    Research and verify contact information for key decision makers at the 5 qualified companies.
+    
+    FOR EACH COMPANY:
+    1. Find LinkedIn profiles of key decision makers
+    2. Verify profile authenticity and current role
+    3. Identify official contact channels (company email format, direct lines)
+    4. Focus on C-level, VPs, Directors, and Department Heads
+    
+    CRITICALLY IMPORTANT:
+    - Only include verifiable contact information
+    - Focus on decision makers relevant to {industry}
+    - Process all 5 companies
+    - Use "Needs verification" for uncertain data
+  expected_output: >
+    Return a JSON array with contact details for all 5 companies:
+    [
+      {
+        "company_name": "String - Company name",
+        "key_contacts": [
+          {
+            "name": "String - Full name",
+            "title": "String - Current role",
+            "department": "String - Department",
+            "linkedin_url": "String - Verified LinkedIn URL",
+            "email_format": "String - Company email format if found",
+            "verification_status": "String - Verified/Needs verification"
+          }
+        ],
+        "company_contact": {
+          "main_phone": "String - Official company phone",
+          "website_contact": "String - URL to contact page",
+          "linkedin_page": "String - Company LinkedIn page"
+        }
+      }
+    ]
+  agent: contact_agent
+  
+lead_qualification_task:
+  description: >
+    Evaluate ALL 5 leads from the {industry} sector in {country} provided by the lead generator.
+    YOU MUST PROCESS AND RETURN ALL 5 COMPANIES with qualification scores.
+    
+    For each company:
+    1. Verify company's actual involvement in {industry}
+    2. Assess market presence in {country}
+    3. Evaluate potential business value
+    4. Check decision-maker accessibility
+    
+    CRITICALLY IMPORTANT:
+    - Process and return ALL 5 companies
+    - Your output MUST be a valid JSON structure with ALL required fields
+    - NEVER omit any companies or fields
+    - Use "Needs verification" for uncertain data rather than omitting it
+  expected_output: >
+    You MUST return ALL 5 companies in a JSON array, each with this structure:
+    [
+      {
+        "company_name": "Example Company",
+        "annual_revenue": "$X million",
+        "location": {"city": "City Name", "country": "Country Name"},
+        "website_url": "https://example.com",
+        "review": "Description of what they do",
+        "num_employees": 500,
+        "key_decision_makers": [
+          {"name": "John Doe", "role": "CEO", "linkedin": "https://linkedin.com/in/johndoe"}
+        ],
+        "score": 8
+      }
+    ]
+    IMPORTANT: Return ALL 5 companies, even those with lower scores.
+  agent: lead_qualifier
+
+sales_management_task:
+  description: >
+    Review and prioritize ALL 5 qualified leads from the {industry} sector in {country}.
+    
+    YOUR TASK:
+    1. Review all 5 companies from the qualification stage
+    2. Provide a final assessment for each company
+    3. Sort them by priority (highest score to lowest)
+    4. Include specific recommendations for approaching each company
+    
+    IMPORTANT: YOU MUST RETURN ALL 5 COMPANIES in your final output, sorted by priority.
+  expected_output: >
+    Return a JSON array with ALL 5 companies, sorted by priority (highest score first).
+    Each company must include all previous fields plus sales recommendations.
+    The output must maintain the same structure as before, with all 5 companies included.
+  agent: sales_manager
+
+
