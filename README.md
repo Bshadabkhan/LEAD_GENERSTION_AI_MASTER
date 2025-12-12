@@ -128,7 +128,7 @@ Serper API key
 
 Installation
 # Clone the repository
-git clone https://github.com/yourusername/lead-generator.git
+git clone https://github.com/Bshadabkhan/LEAD_GENERSTION_AI_MASTER
 cd lead-generator
 
 # Install dependencies
@@ -194,4 +194,4 @@ Serper.dev – Search APIs
 MIT License — see LICENSE.
 
 🔗 Connect With Me
-<p align="left"> <a href="https://www.linkedin.com/in/albert-folch-alcaraz/"> <img src="https://img.shields.io/badge/linkedin-Connect-blue?style=for-the-badge&logo=linkedin&logoColor=white"/> </a> <a href="https://github.com/folken2"> <img src="https://img.shields.io/badge/github-Follow-black?style=for-the-badge&logo=github&logoColor=white"/> </a> </p>
+<p align="left"> <a href="https://github.com/Bshadabkhan"> <img src="https://img.shields.io/badge/linkedin-Connect-blue?style=for-the-badge&logo=linkedin&logoColor=white"/> </a> <a href="https://github.com/folken2"> <img src="https://img.shields.io/badge/github-Follow-black?style=for-the-badge&logo=github&logoColor=white"/> </a> </p>
